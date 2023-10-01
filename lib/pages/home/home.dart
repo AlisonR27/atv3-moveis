@@ -70,8 +70,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                       child: Text('Erro.'),
                     );
                   } else {
-                    dolar = 30.0;
-                    euro = 30.0;
+                    dolar =
+                        snapshot.data!["results"]["currencies"]["USD"]["buy"];
+                    euro =
+                        snapshot.data!["results"]["currencies"]["EUR"]["buy"];
                     return SingleChildScrollView(
                       padding: const EdgeInsets.all(15.0),
                       child: Wrap(runSpacing: 20.0, children: <Widget>[
@@ -94,11 +96,18 @@ class _HomeWidgetState extends State<HomeWidget> {
       },
       controller: ctrl,
       decoration: InputDecoration(
-          labelText: label,
-          labelStyle: const TextStyle(color: Colors.blueGrey),
-          border: const OutlineInputBorder(),
-          prefixText: "$prefix"),
-      style: const TextStyle(color: Colors.blueGrey, fontSize: 20.0),
+        isDense: true,
+        labelText: label,
+        labelStyle: const TextStyle(color: Colors.white, fontSize: 18.0),
+        border: const OutlineInputBorder(),
+        contentPadding: const EdgeInsets.all(15.0),
+        prefixText: "$prefix  ",
+        prefixStyle: const TextStyle(color: Colors.blueGrey, fontSize: 20.0),
+      ),
+      style: const TextStyle(
+        fontSize: 20.0,
+      ),
+      textAlign: TextAlign.left,
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
     );
   }
